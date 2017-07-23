@@ -20,6 +20,11 @@ const config = convict({
     default: 'error',
     env: 'LOG_LEVEL',
   },
+  mongo_uri: {
+    doc: 'The mongodb URI',
+    default: 'mongodb://localhost:27017/imagesharing',
+    env: 'MONGODB_URI',
+  },
   session_secret: {
     doc: 'Session secret',
     format: String,
