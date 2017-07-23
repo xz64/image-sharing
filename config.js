@@ -8,11 +8,35 @@ const config = convict({
     default: 8080,
     env: 'PORT',
   },
+  hosted_domain: {
+    doc: 'The domain the site is hosted on, used for oauth callback',
+    format: String,
+    default: 'http://localhost:8080',
+    env: 'HOSTED_DOMAIN',
+  },
   log_level: {
     doc: 'The logger level',
     format: String,
     default: 'error',
     env: 'LOG_LEVEL',
+  },
+  session_secret: {
+    doc: 'Session secret',
+    format: String,
+    default: '',
+    env: 'SESSION_SECRET',
+  },
+  twitter_consumer_key: {
+    doc: 'twitter consumer key',
+    format: String,
+    default: '',
+    env: 'TWITTER_CONSUMER_KEY',
+  },
+  twitter_consumer_secret: {
+    doc: 'twitter consumer secret',
+    format: String,
+    default: '',
+    env: 'TWITTER_CONSUMER_SECRET',
   },
 });
 

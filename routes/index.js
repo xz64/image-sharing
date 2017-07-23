@@ -9,4 +9,8 @@ router.use(helmet({
   noCache: true,
 }));
 
+const publicRoutes = require('./public');
+
+router.use('', publicRoutes.routes(), publicRoutes.allowedMethods());
+
 module.exports = router;
