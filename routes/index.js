@@ -2,6 +2,9 @@ const Router = require('koa-router');
 const helmet = require('koa-helmet');
 const CSRF = require('koa-csrf');
 
+const publicRoutes = require('./public');
+const privateRoutes = require('./private');
+
 const router = new Router({
   prefix: '/api',
 });
@@ -11,9 +14,6 @@ router.use(helmet({
 }));
 
 router.use(new CSRF());
-
-const publicRoutes = require('./public');
-const privateRoutes = require('./private');
 
 router.use('', publicRoutes.routes(), publicRoutes.allowedMethods());
 
