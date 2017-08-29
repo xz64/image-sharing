@@ -4,6 +4,7 @@ const destroyable = require('server-destroy');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 const passport = require('koa-passport');
+const serve = require('koa-static');
 
 const db = require('./db');
 const config = require('./config');
@@ -34,6 +35,16 @@ app.use(passport.session());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+app.use(serve('public'));
+
+app.use(async (ctx, next) => {
+  await next();
+
+  if (ctx.status === 404) {
+    ctx.redirect('/');
+  }
+});
 
 const server = http.createServer(app.callback());
 
